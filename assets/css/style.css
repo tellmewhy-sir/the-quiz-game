@@ -1,0 +1,22 @@
+:where(:root) {
+    display: grid;
+    height: 100%;
+}
+
+.is-fullheight {
+    height: 100%;
+}
+
+.is-fullwidth {
+    width: 100%;
+}
+
+.is-fully-centered {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttons {
+    gap: 1rem;
+}

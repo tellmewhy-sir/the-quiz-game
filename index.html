@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>The Quiz</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css">
+		<link rel="stylesheet" href="assets/css/style.css">
+	</head>
+	<body>
+		<div class="hero is-fullheight">
+			<div class="container is-fully-centered">
+				<div class="box" id="js-quiz-start">
+					<h1 class="title is-1">
+						The Quiz
+					</h1>
+					<button class="button is-info" id="js-start-btn">
+						Click to start
+					</button>
+				</div>
+				<div class="box is-hidden" id="js-quiz-panel">
+					<p>Timer: <span class="is-bold" id="js-timer"></span></p>
+					<p class="title is-3" id="js-question-text"></p>
+					<div class="buttons is-flex" id="js-question-choices">
+
+					</div>
+					<div class="notification is-hidden" id="js-feedback"></div>
+				</div>
+				<div class="box is-hidden" id="js-quiz-end">
+					<h1 class="title is-1">
+						Finish!
+					</h1>
+					<div class="field has-addons">
+						<div class="control">
+							<input id="js-initials" type="text" class="input is-input" placeholder="Enter initials">
+						</div>
+						<div class="control">
+							<button class="button is-primary" type="button" id="js-submit-btn">
+								Submit
+							</button>
+						</div>
+					</div>
+					<table class="table">
+						<thead>
+							<tr>
+								<td>Initials</td>
+								<td>Score</td>
+							</tr>
+						</thead>
+						<tbody id="js-scores-list"></tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<script src="assets/js/questions.js"></script>
+		<script src="assets/js/script.js"></script>
+	</body>
+</html>
+

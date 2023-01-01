@@ -11,6 +11,7 @@ const startBtn = document.getElementById('js-start-btn');
 
 const initialsInput = document.getElementById('js-initials');
 const submitBtn = document.getElementById('js-submit-btn');
+const clearBtn = document.getElementById('js-clear-scores');
 const scoresListEl = document.getElementById('js-scores-list');
 
 let quizQuestionIndex = 0;
@@ -19,7 +20,9 @@ let countdownTimerId;
 
 function startQuiz() {
   landingPanel.classList.add('is-hidden');
+  endPanel.classList.add('is-hidden');
   quizPanel.classList.remove('is-hidden');
+  quizQuestionIndex = 0;
 
   renderQuestion(questions[quizQuestionIndex]);
   startTimer();
@@ -97,6 +100,8 @@ function saveScore() {
 }
 
 function loadScores() {
+  scoresListEl.innerHTML = '';
+
   const scores = JSON.parse(localStorage.getItem('high-scores'));
 
   if (!scores) {
@@ -128,7 +133,17 @@ submitBtn.addEventListener('click', () => {
   saveScore();
   loadScores();
 });
+clearBtn.addEventListener('click', () => {
+  localStorage.setItem('high-scores', null);
+  loadScores();
+});
 
 choiceButtons.addEventListener('click', (e) => {
   handleChoiceClick(e.target);
+});
+
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('js-start-btn')) {
+    startQuiz();
+  }
 });

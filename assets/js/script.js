@@ -15,7 +15,7 @@ const clearBtn = document.getElementById('js-clear-scores');
 const scoresListEl = document.getElementById('js-scores-list');
 
 let quizQuestionIndex = 0;
-let countdownTimer = 60;
+let countdownTimer;
 let countdownTimerId;
 
 function startQuiz() {
@@ -36,10 +36,14 @@ function endQuiz() {
 }
 
 function startTimer() {
+  countdownTimer = 60;
   timerEl.textContent = countdownTimer;
   countdownTimerId = setInterval(() => {
     countdownTimer--;
     timerEl.textContent = countdownTimer;
+    if (!countdownTimer) {
+      endQuiz();
+    }
   }, 1000);
 }
 
@@ -72,17 +76,14 @@ function handleChoiceClick(buttonEl) {
   const { answer } = questions[questionIndex];
 
   if (key === answer) {
-    handleCorrect();
+    if (quizQuestionIndex === questions.length) {
+      endQuiz();
+    } else {
+      renderQuestion(questions[quizQuestionIndex]);
+    }
   } else {
-    handleIncorrect();
-  }
-
-  feedbackEl.classList.remove('is-hidden');
-
-  if (quizQuestionIndex === questions.length) {
-    endQuiz();
-  } else {
-    renderQuestion(questions[quizQuestionIndex]);
+    countdownTimer -= 10;
+    buttonEl.classList.add('animate__animated', 'animate__headShake');
   }
 }
 

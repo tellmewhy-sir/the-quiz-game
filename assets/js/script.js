@@ -76,11 +76,14 @@ function handleChoiceClick(buttonEl) {
   const { answer } = questions[questionIndex];
 
   if (key === answer) {
-    if (quizQuestionIndex === questions.length) {
-      endQuiz();
-    } else {
-      renderQuestion(questions[quizQuestionIndex]);
-    }
+    buttonEl.classList.add('animate__animated', 'animate__heartBeat');
+    setTimeout(() => {
+      if (quizQuestionIndex === questions.length) {
+        endQuiz();
+      } else {
+        renderQuestion(questions[quizQuestionIndex]);
+      }
+    }, 750);
   } else {
     countdownTimer -= 10;
     buttonEl.classList.add('animate__animated', 'animate__headShake');

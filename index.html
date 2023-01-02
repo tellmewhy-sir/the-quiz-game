@@ -10,9 +10,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.4/css/bulma.min.css"
     />
     <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-  />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -21,11 +21,18 @@
         <div class="box" id="js-quiz-start">
           <h1 class="title is-1">The Quiz</h1>
           <button class="button is-info" id="js-start-btn">
-            Click to start
+            Start
           </button>
         </div>
         <div class="box is-hidden" id="js-quiz-panel">
-          <p>Timer: <span class="is-bold" id="js-timer"></span></p>
+          <p>
+            Timer: <span class="has-text-weight-bold" id="js-timer"></span>
+            <span
+              class="has-text-weight-bold has-text-danger minus-ten is-hidden animate__animated animate__flash"
+              id="js-minus-ten"
+              >-10</span
+            >
+          </p>
           <p class="title is-3" id="js-question-text"></p>
           <div class="buttons is-flex" id="js-question-choices"></div>
           <div class="notification is-hidden" id="js-feedback"></div>
@@ -62,14 +69,14 @@
               </tr>
             </thead>
             <tbody id="js-scores-list">
-				<tr>
-					<td>No high scores yet</td>
-				</tr>
-			</tbody>
+              <tr>
+                <td>No high scores yet</td>
+              </tr>
+            </tbody>
           </table>
-		  <button class="button is-danger" id="js-clear-scores">
-			Clear scores
-		  </button>
+          <button class="button is-danger" id="js-clear-scores">
+            Clear scores
+          </button>
         </div>
       </div>
     </div>

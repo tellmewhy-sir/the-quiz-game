@@ -6,6 +6,7 @@ const timerEl = document.getElementById('js-timer');
 const questionTitle = document.getElementById('js-question-text');
 const choiceButtons = document.getElementById('js-question-choices');
 const feedbackEl = document.getElementById('js-feedback');
+const minusTen = document.getElementById('js-minus-ten');
 
 const startBtn = document.getElementById('js-start-btn');
 
@@ -41,7 +42,7 @@ function startTimer() {
   countdownTimerId = setInterval(() => {
     countdownTimer--;
     timerEl.textContent = countdownTimer;
-    if (!countdownTimer) {
+    if (countdownTimer <= 0) {
       endQuiz();
     }
   }, 1000);
@@ -85,6 +86,10 @@ function handleChoiceClick(buttonEl) {
       }
     }, 750);
   } else {
+    minusTen.classList.remove('is-hidden');
+    setTimeout(() => {
+      minusTen.classList.add('is-hidden');
+    }, 500);
     countdownTimer -= 10;
     buttonEl.classList.add('animate__animated', 'animate__headShake');
   }
@@ -100,7 +105,7 @@ function saveScore() {
   });
 
   localStorage.setItem('high-scores', JSON.stringify(existingScores));
-  initialsInput.textContent = '';
+  initialsInput.value = '';
 }
 
 function loadScores() {
@@ -120,16 +125,6 @@ function loadScores() {
         `;
     scoresListEl.append(row);
   });
-}
-
-function handleCorrect() {
-  feedbackEl.textContent = "You're correct";
-  feedbackEl.classList.add('is-success');
-}
-
-function handleIncorrect() {
-  feedbackEl.textContent = "You're wrong";
-  feedbackEl.classList.add('is-danger');
 }
 
 startBtn.addEventListener('click', startQuiz);
